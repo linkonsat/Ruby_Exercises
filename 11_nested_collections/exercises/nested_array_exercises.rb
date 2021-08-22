@@ -57,16 +57,17 @@ return empty_seats
 end
 
 def find_favorite(array_of_hash_objects)
+  favorite = array_of_hash_objects.each do | row |
+    if (row[:is_my_favorite?] == true)
+      return row
+
+    end
+  end
+  favorite.length != 1 ? nil : favorite
+end
   # take an array_of_hash_objects and return the hash which has the key/value
   # pair :is_my_favorite? => true. If no hash returns the value true to the key
-  # :is_my_favorite? it should return nil
-  array_of_hash_objects.each do |row|
-   if (row[:is_my_favorite?] == true) 
-   return row
-   else 
-    return nil
-   end
-  end
+
   # array_of_hash_objects will look something like this:
   # [
   #   { name: 'Ruby', is_my_favorite?: true },
@@ -76,4 +77,4 @@ def find_favorite(array_of_hash_objects)
 
   # TIP: there will only be a maximum of one hash in the array that will
   # return true to the :is_my_favorite? key
-end
+
