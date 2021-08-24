@@ -1,0 +1,31 @@
+
+[1mFrom:[0m /home/mmaisel/Documents/Ruby_Exercises/Caesar_Cipher.rb:21 Object#caesar_shift:
+
+    [1;34m18[0m: [32mdef[0m [1;34mcaesar_shift[0m(encrypted_string, character_shift)
+    [1;34m19[0m: split = encrypted_string.split([31m[1;31m'[0m[31m[1;31m'[0m[31m[0m)
+    [1;34m20[0m: binding.pry
+ => [1;34m21[0m: split.each [32mdo[0m |string|
+    [1;34m22[0m:     string_ascii = string.ord
+    [1;34m23[0m:     [32mif[0m (([1;34m141[0m..[1;34m172[0m).include?(string_ascii) || ([1;34m101[0m..[1;34m132[0m).include?(string_ascii) )
+    [1;34m24[0m:        
+    [1;34m25[0m:         [32mif[0m (([1;34m141[0m..[1;34m172[0m).include?(string_ascii - character_shift) || ([1;34m101[0m..[1;34m132[0m).include?(string_ascii- character_shift))
+    [1;34m26[0m:         
+    [1;34m27[0m:             new_string_ascii = string_ascii - character_shift
+    [1;34m28[0m:         string.replace(new_string_ascii.chr)
+    [1;34m29[0m:         
+    [1;34m30[0m:         [32melsif[0m (string_ascii - character_shift < [1;34m141[0m && ([1;34m141[0m..[1;34m171[0m).include?(string_ascii))
+    [1;34m31[0m:             shift_adjust = string_ascii - [1;34m141[0m
+    [1;34m32[0m:             large_shift = (character_shift - shift_adjust) % [1;34m26[0m  
+    [1;34m33[0m:         range_end_shift = [1;34m171[0m - large_shift
+    [1;34m34[0m:         string.replace(range_end_shift.chr)  
+    [1;34m35[0m:            
+    [1;34m36[0m:         [32melsif[0m(string_ascii - character_shift < [1;34m101[0m && ([1;34m101[0m..[1;34m132[0m).include?(string_ascii))
+    [1;34m37[0m: 
+    [1;34m38[0m:         [32mend[0m
+    [1;34m39[0m:     [32mend[0m
+    [1;34m40[0m: 
+    [1;34m41[0m: [32mend[0m
+    [1;34m42[0m: 
+    [1;34m43[0m: puts split.join([31m[1;31m'[0m[31m[1;31m'[0m[31m[0m)
+    [1;34m44[0m: [32mend[0m
+
