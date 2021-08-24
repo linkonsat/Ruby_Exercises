@@ -19,24 +19,21 @@ def caesar_shift(encrypted_string, character_shift)
 split = encrypted_string.split('')
 
 split.each do |string|
-binding.pry
+     # binding.pry
     string_ascii = string.ord
-  
-        if ((65..90).include?(string_ascii - character_shift) || (97..122).include?(string_ascii- character_shift))
-        
-            new_string_ascii = string_ascii - character_shift
-        string.replace(new_string_ascii.chr)
-        
-        elsif (string_ascii - character_shift < 65 && (65..90).include?(string_ascii))
+    base = character_shift < 0 ? -26 : 26
+     
+        if ((65..90).include?(string_ascii))
             shift_adjust = string_ascii - 65
-            large_shift = (character_shift - shift_adjust) % 26  
-        range_end_shift = 90 - large_shift
+            large_shift = (character_shift + shift_adjust) %  base
+        range_end_shift = large_shift < 0 ? 90 + large_shift : 65 + large_shift
         string.replace(range_end_shift.chr)  
            
-        elsif(string_ascii - character_shift < 97 && (97..122).include?(string_ascii))
+        elsif((97..122).include?(string_ascii))
+            
             shift_adjust = string_ascii - 97
-            large_shift = (character_shift - shift_adjust) % 26  
-         range_end_shift = 122 - large_shift
+            large_shift = (character_shift + shift_adjust) % base
+         range_end_shift = large_shift < 0 ?  122 + large_shift : 97 + large_shift
         string.replace(range_end_shift.chr)  
         end
     end
